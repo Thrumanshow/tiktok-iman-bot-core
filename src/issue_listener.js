@@ -1,40 +1,43 @@
 // src/issue_listener.js
 
-const { IncomingWebhook } = require('@slack/webhook');
-require('dotenv').config();
+const { Octokit } = require('@octokit/rest');
+const { escribirLog } = require('./log_writer');
 
-const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
+const octokit = new Octokit({
+  auth: process.env.GITHUB_TOKEN
+});
 
-// Crear instancia del webhook de Slack
-const slack = new IncomingWebhook(SLACK_WEBHOOK_URL);
+const REPO_OWNER = process.env.REPO_OWNER;
+const REPO_NAME = process.env.REPO_NAME;
 
-// Verifica si el issue contiene un enlace de TikTok válido
-function extractTikTokLink(text) {
-  const regex = /(https?:\/\/(?:www\.)?tiktok\.com\/[^\s]+)/g;
-  const match = text.match(regex);
-  return match ? match[0] : null;
+// Detectar enlaces de TikTok en un issue
+function contieneEnlaceTikTok(texto) {
+  const regex = /https:\/\/www\.tiktok\.com\/[^\s)]+/g;
+  return texto.match(regex) || [];
 }
 
-// Procesa el payload de un issue
-async function handleIssue(payload) {
-  const { action, issue } = payload;
+// Leer los issues y registrar los que contengan TikTok
+async function revisarIssues() {
+  try {
+    const { data: issues } = await octokit.issues.listForRepo({
+      owner: REPO_OWNER,
+      repo: REPO_NAME,
+      state: 'open'
+    });
 
-  if (action === 'opened') {
-    const tiktokLink = extractTikTokLink(issue.body);
-
-    if (tiktokLink) {
-      const message = `🧲 Nueva publicación TikTok detectada:\n\n👤 Usuario: ${issue.user.login}\n🔗 Enlace: ${tiktokLink}\n📝 Título: ${issue.title}`;
-      console.log(message);
-
-      if (SLACK_WEBHOOK_URL) {
-        await slack.send({ text: message });
+    for (const issue of issues) {
+      const enlaces = contieneEnlaceTikTok(issue.body || '');
+      if (enlaces.length > 0) {
+        for (const enlace of enlaces) {
+          escribirLog(`📥 Issue #${issue.number} - TikTok: ${enlace}`);
+        }
       }
-    } else {
-      console.log('No se detectó ningún enlace de TikTok válido en el issue.');
     }
+  } catch (error) {
+    console.error('❌ Error al revisar issues:', error.message);
   }
 }
 
 module.exports = {
-  handleIssue
+  revisarIssues
 };

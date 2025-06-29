@@ -1,0 +1,12 @@
+{
+  "name": "tiktok-iman-bot-core",
+  "version": "1.0.0",
+  "description": "Motor de atracción digital para TikTok (visitas, likes, interacciones)",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": ["tiktok", "bot", "visibilidad", "influencer", "hormigasais"],
+  "author": "HormigasAIS | Thrumanshow",
+  "license": "MIT"
+}

@@ -1,12 +1,5 @@
-// main.js
-/**
- * Punto de entrada principal para el bot imán de TikTok 🧲.
- * Escucha la carpeta de issues y registra eventos.
- */
+import { listenToIssues } from './listeners/issue_listener.js';
+import { impulsoXOXO } from './src/xoxo-impulsor.js';
 
-const { escucharIssues } = require('./listeners/issue_listener');
-const logWriter = require('./utils/log_writer');
-
-// 🔄 Iniciar escucha de issues
-logWriter.logEvento("🚀 Iniciando TikTok Imán Bot...");
-escucharIssues();
+listenToIssues();
+impulsoXOXO(); // según la lógica que querés aplicar

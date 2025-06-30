@@ -1,21 +1,39 @@
-// main.js
-require("dotenv").config();
-const { fetchTrends } = require("./trend_fetcher");
-const { analyzeTrends } = require("./trend_analyzer");
-const { createIssue } = require("./github_issuer");
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
 
-async function runWatcher() {
-  const trends = await fetchTrends();
-  const hotTrends = analyzeTrends(trends);
+// Ruta para guardar tendencias simuladas
+const trendsLogPath = path.join(__dirname, 'detected_trends.json');
 
-  for (const trend of hotTrends) {
-    await createIssue(
-      trend,
-      process.env.GITHUB_TOKEN,
-      process.env.TARGET_REPO_OWNER,
-      process.env.TARGET_REPO_NAME
-    );
-  }
+// Simulación de tendencias destacadas (mock)
+const trendingHashtags = [
+  "#viral",
+  "#parati",
+  "#foryou",
+  "#humor",
+  "#musictrend",
+  "#tendencia2025",
+  "#AIgenerated",
+  "#digitalart"
+];
+
+// Función simulada para "detectar" tendencias
+function detectTikTokTrends() {
+  const timestamp = new Date().toISOString();
+
+  const trendsData = {
+    timestamp,
+    topTrends: trendingHashtags.slice(0, 5), // Simula top 5
+    source: "simulado-local",
+    status: "ok"
+  };
+
+  fs.writeFileSync(trendsLogPath, JSON.stringify(trendsData, null, 2));
+  console.log(`🧠 Tendencias detectadas: ${trendsData.topTrends.join(', ')}`);
 }
 
-runWatcher();
+// Punto de inicio
+(async () => {
+  console.log("🚀 Iniciando escaneo de tendencias TikTok (modo simulado)...");
+  detectTikTokTrends();
+})();

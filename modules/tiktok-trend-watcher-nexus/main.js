@@ -1,39 +1,39 @@
-const axios = require('axios');
+// main.js del módulo tiktok-trend-watcher-nexus
+const { fetchTrends } = require('./core/trend_fetcher');
 const fs = require('fs');
 const path = require('path');
 
-// Ruta para guardar tendencias simuladas
-const trendsLogPath = path.join(__dirname, 'detected_trends.json');
+async function iniciarEscaneo() {
+  console.log("🔍 Iniciando escaneo de tendencias TikTok...");
 
-// Simulación de tendencias destacadas (mock)
-const trendingHashtags = [
-  "#viral",
-  "#parati",
-  "#foryou",
-  "#humor",
-  "#musictrend",
-  "#tendencia2025",
-  "#AIgenerated",
-  "#digitalart"
-];
+  const tendencias = await fetchTrends();
 
-// Función simulada para "detectar" tendencias
-function detectTikTokTrends() {
-  const timestamp = new Date().toISOString();
+  if (tendencias.length === 0) {
+    console.warn("⚠️ No se encontraron tendencias.");
+    return;
+  }
 
-  const trendsData = {
-    timestamp,
-    topTrends: trendingHashtags.slice(0, 5), // Simula top 5
-    source: "simulado-local",
-    status: "ok"
-  };
+  console.log("✅ Tendencias detectadas:");
+  tendencias.forEach((tag, i) => {
+    console.log(`  ${i + 1}. ${tag}`);
+  });
 
-  fs.writeFileSync(trendsLogPath, JSON.stringify(trendsData, null, 2));
-  console.log(`🧠 Tendencias detectadas: ${trendsData.topTrends.join(', ')}`);
+  // Guardar resultados en logs
+  const logDir = path.join(__dirname, 'logs');
+  const logFile = path.join(logDir, `trends_${Date.now()}.json`);
+
+  try {
+    if (!fs.existsSync(logDir)) fs.mkdirSync(logDir, { recursive: true });
+    fs.writeFileSync(logFile, JSON.stringify({ tendencias, timestamp: new Date() }, null, 2));
+    console.log(`📂 Tendencias guardadas en: ${logFile}`);
+  } catch (err) {
+    console.error("💥 Error al guardar log de tendencias:", err.message);
+  }
 }
 
-// Punto de inicio
-(async () => {
-  console.log("🚀 Iniciando escaneo de tendencias TikTok (modo simulado)...");
-  detectTikTokTrends();
-})();
+// Ejecución automática si se llama directamente
+if (require.main === module) {
+  iniciarEscaneo();
+}
+
+module.exports = { iniciarEscaneo };

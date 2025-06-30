@@ -6,10 +6,12 @@ on:
     paths:
       - '**.js'
       - '.github/workflows/imantador.yml'
+      - '.github/ISSUE_TEMPLATE/**'
 
 jobs:
   ejecutar-bot:
     runs-on: ubuntu-latest
+
     steps:
       - name: 🔄 Clonar el repositorio
         uses: actions/checkout@v3
@@ -22,9 +24,30 @@ jobs:
       - name: 📦 Instalar dependencias
         run: npm install
 
-      - name: 🧲 Ejecutar el bot
+      - name: ⚙️ Preparar entorno
+        run: |
+          mkdir -p logs
+          echo "Entorno preparado"
+
+      - name: 🧲 Ejecutar el bot principal
         env:
           REPO_OWNER: ${{ github.repository_owner }}
           REPO_NAME: tiktok-iman-bot-core
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node main.js
+
+      - name: 🔍 Buscar issue activo para impulsar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Buscando issue con enlace TikTok..."
+          ISSUE_JSON=$(gh issue list --limit 1 --state open --json title,body,url --jq '.[] | select(.body | test("https://vm.tiktok.com/"))')
+          
+          if [ -z "$ISSUE_JSON" ]; then
+            echo "❌ No hay issue activo con enlace TikTok."
+            exit 0
+          else
+            echo "✅ Issue detectado:"
+            echo "$ISSUE_JSON"
+            echo "$ISSUE_JSON" > logs/issue_detectado.json
+          fi

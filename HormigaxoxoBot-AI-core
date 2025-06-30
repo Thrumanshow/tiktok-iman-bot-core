@@ -1,0 +1,24 @@
+// 📁 utils/placeholder_bridge.js
+
+const fs = require('fs'); const path = require('path');
+
+const PLACEHOLDER_FILE = path.join(__dirname, '../logs/placeholder/summary.txt');
+
+function construirMensajeDesdeIssue(issueData) { const { enlace_video, objetivo, notas_opcionales } = issueData;
+
+return `🌱 Registro de impulso creado:
+
+📎 Video: ${enlace_video} 🎯 Objetivo: ${objetivo} 💡 Notas: ${notas_opcionales || 'N/A'} 🕓 Timestamp: ${new Date().toISOString()}
+
+XOXO-impulsor ha iniciado el rastro.`; }
+
+function guardarPlaceholder(issueData) { const mensaje = construirMensajeDesdeIssue(issueData);
+
+fs.mkdirSync(path.dirname(PLACEHOLDER_FILE), { recursive: true }); fs.writeFileSync(PLACEHOLDER_FILE, mensaje);
+
+console.log('✅ Placeholder registrado correctamente.'); }
+
+module.exports = { guardarPlaceholder, };
+
+// 🔗 Vinculado desde bot.js y main.js
+

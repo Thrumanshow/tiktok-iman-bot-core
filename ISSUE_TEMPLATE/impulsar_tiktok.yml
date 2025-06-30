@@ -1,0 +1,36 @@
+name: 🚀 Impulsar publicación TikTok
+description: Usa este template para solicitar impulsar una publicación en TikTok
+title: "🎯 Impulsar publicación TikTok: @"
+labels: ["impulsar", "TikTok", "bot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Por favor completa la siguiente información para impulsar tu publicación en TikTok.
+
+  - type: input
+    id: enlace_video
+    attributes:
+      label: "📎 Enlace al video"
+      description: "Inserta el enlace directo al video de TikTok"
+      placeholder: "https://vm.tiktok.com/..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: objetivo
+    attributes:
+      label: "🎯 Objetivo"
+      description: "¿Cuál es el objetivo para esta publicación?"
+      placeholder: "Ejemplo: Aumentar visibilidad orgánica y evaluar ratio de interacción."
+    validations:
+      required: true
+
+  - type: textarea
+    id: notas_opcionales
+    attributes:
+      label: "💡 Notas opcionales"
+      description: "Notas adicionales o contexto para la publicación"
+      placeholder: "Ejemplo: Puede estar vinculado a tendencia actual."
+    validations:
+      required: false

@@ -1,1 +1,10 @@
- 
+ // listeners/welcome.js
+
+module.exports = (client) => {
+  client.on('guildMemberAdd', (member) => {
+    const channel = member.guild.systemChannel;
+    if (channel) {
+      channel.send(`👋 Bienvenido/a al servidor, ${member.user.username}! Sos parte de la red HormigasAIS 🐜🧠`);
+    }
+  });
+};

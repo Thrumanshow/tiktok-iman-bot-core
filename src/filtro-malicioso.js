@@ -1,37 +1,37 @@
 /**
- * 🛡️ Filtro de Contribución Supervisada
- * Autor: Thrumanshow (Cristhiam Quiñonez)
- * Proyecto: tiktok-iman-bot-core
- * Propósito: Evitar fork malicioso o contribuciones no autorizadas.
+ * 🛡️ 受監督的貢獻過濾器
+ * 作者：Thrumanshow（Cristhiam Quiñonez）
+ * 專案：tiktok-iman-bot-core
+ * 目的：防止惡意 Fork 或未授權的貢獻。
  */
 
 const fs = require('fs');
 const path = require('path');
 
-// Ruta al archivo de contribución
-const contribPath = path.join(__dirname, '../acerca-de/nexus-alerts/filtro-malicioso/contribución.md');
+// 貢獻說明文件的路徑
+const contribPath = path.join(__dirname, '../acerca-de/nexus-alerts/filtro-malicioso/CONTRIBUTING.md');
 
-// Función de validación de contribución
+// 貢獻驗證函式
 function validarContribucion(usuario) {
   const AUTOR_OFICIAL = 'Thrumanshow';
   const usuariosPermitidos = ['Thrumanshow', 'github-actions[bot]', 'colaborador-de-confianza'];
 
   if (!usuariosPermitidos.includes(usuario)) {
-    console.warn(`🚨 Contribución bloqueada: ${usuario} no está autorizado.`);
+    console.warn(`🚨 已封鎖貢獻：${usuario} 未經授權。`);
 
     return {
       autorizado: false,
-      mensaje: 'Tu contribución será revisada por el autor antes de fusionarse.'
+      mensaje: '你的貢獻將由作者審核後才會合併。'
     };
   }
 
   return {
     autorizado: true,
-    mensaje: 'Contribución válida. Continuando con el proceso...'
+    mensaje: '貢獻有效，正在繼續處理...'
   };
 }
 
-// Exportar filtro
+// 匯出過濾器模組
 module.exports = {
   validarContribucion
 };

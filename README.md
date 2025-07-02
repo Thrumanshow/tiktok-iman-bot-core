@@ -61,6 +61,20 @@ XOXO 將會完成剩下的任務。
 
 透過這個橋樑，**Imán Bot Core** 不僅能傾聽 GitHub，更能對話 Discord，形成完整的推廣與回饋循環。  
 
+## 🛡️ 貢獻防護系統（Filtro de Contribución Supervisada）
+
+為了保護本專案的原創性與完整性，本倉庫已啟用**貢獻過濾系統**。  
+只有以下用戶可自動提交變更：
+
+- `Thrumanshow`（作者本人）
+- `github-actions[bot]`
+- 信任的協作者名單
+
+其他使用者的提案將會經由作者審查後決定是否合併。  
+👉 詳見：[`acerca-de/nexus-alerts/filtro-malicioso/CONTRIBUTING.md`](./acerca-de/nexus-alerts/filtro-malicioso/CONTRIBUTING.md)
+
+🔒 此機制由 `filtro-malicioso.js` 自動執行，保證專案的透明與安全。
+
 ## 🌀 NEXUS 哲學
 
 這不是關於假帳號或垃圾訊息。  

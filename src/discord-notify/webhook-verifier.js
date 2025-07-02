@@ -1,21 +1,16 @@
-import crypto from 'crypto';
-import dotenv from 'dotenv';
+// src/webhook-verifier.js
+const crypto = require('crypto');
 
-dotenv.config();
+const GITHUB_SECRET = process.env.GITHUB_SECRET;
 
-export function verifyGitHubSignature(req, res, buf, encoding) {
+function verifyGitHubSignature(req) {
   const signature = req.headers['x-hub-signature-256'];
-  const secret = process.env.GITHUB_WEBHOOK_SECRET;
+  if (!signature || !GITHUB_SECRET) return false;
 
-  if (!signature || !secret) {
-    throw new Error('Missing signature or secret');
-  }
+  const hmac = crypto.createHmac('sha256', GITHUB_SECRET);
+  const digest = `sha256=${hmac.update(req.rawBody).digest('hex')}`;
 
-  const hmac = crypto.createHmac('sha256', secret);
-  hmac.update(buf, encoding);
-  const digest = `sha256=${hmac.digest('hex')}`;
-
-  if (signature !== digest) {
-    throw new Error('Invalid signature');
-  }
+  return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(digest));
 }
+
+module.exports = verifyGitHubSignature;

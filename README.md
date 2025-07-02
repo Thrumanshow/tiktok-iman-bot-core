@@ -41,9 +41,12 @@ XOXO 將會完成剩下的任務。
 
 - `main.js`: 核心執行入口  
 - `listeners/issue_listener.js`: 偵測與處理新 issue  
-- `src/xoxo-impulsor.js`: 推廣模組（收集器 + 分析器）  
+- `src/xoxo-impulsor.js`: 推廣模組（收集器 + 分析器）
+- `trends/watchdog.js`: 看門狗模組，用於在 GitHub 與 Discord 之間建立智慧連結。此模組會根據 Issue 觸發，自動調用 
+`trend-watcher.js`，分析影片趨勢並在 Discord 中送出結果回報。是一個回饋循環的橋梁（fibra）元件。  
 - `.github/ISSUE_TEMPLATE/tiktok-impulsar.yml`: 推廣請求樣板  
-- `placeholder/summary.txt`: 被播下的內容之活記憶  
+- `placeholder/summary.txt`: 被播下的內容
+之活記憶  
 
 ## 📡 後續計畫（Roadmap）
 

@@ -49,7 +49,14 @@ XOXO 將會完成剩下的任務。
 
 - [ ] 整合 TikTok 趨勢 API 或進行資料爬取  
 - [ ] 支援其他平台（IG Reels、YouTube Shorts）  
-- [ ] 建立互動分析模組（Engagement Tracker）  
+- [ ] 建立互動分析模組（Engagement Tracker）
+      此模組為系統提供了：
+
+- ✅ 即時訊息通知（feedback loop 自動化）  
+- 🛡️ Webhook 驗證防護（防止惡意觸發）  
+- 🧠 社群互動啟動器（Discord ≠ 被動倉庫）  
+
+透過這個橋樑，**Imán Bot Core** 不僅能傾聽 GitHub，更能對話 Discord，形成完整的推廣與回饋循環。  
 
 ## 🌀 NEXUS 哲學
 

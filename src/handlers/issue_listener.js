@@ -38,3 +38,4 @@ async function handleNewIssue(issue) {
 module.exports = {
   handleNewIssue
 };
+

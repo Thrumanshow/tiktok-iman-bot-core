@@ -5,6 +5,8 @@
   "main": "main.js",
   "type": "module",
   "scripts": {
+  "start:webhook": "node webhook-listener.js"
+}
     "start": "node main.js"
   },
   "dependencies": {

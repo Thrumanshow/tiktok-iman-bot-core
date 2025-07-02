@@ -15,11 +15,9 @@ module.exports = {
     if (command === '!kick' && message.member.permissions.has('KICK_MEMBERS')) {
       const member = message.mentions.members.first();
       if (member) {
-        await member.kick('Kicked by bot');
+        await member.kick('Expulsado por el bot de HormigasAIS');
         message.channel.send(`🛡️ Usuario ${member.user.tag} fue expulsado.`);
       }
     }
-
-    // Puedes agregar !mute, !warn, etc.
   }
 };

@@ -1,22 +1,42 @@
 // src/discord-notify.js
 const axios = require('axios');
-require('dotenv').config();
+const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 
-async function notifyDiscord(message) {
-  const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
-
-  if (!webhookUrl) {
-    console.warn("⚠️ Webhook de Discord no configurado.");
+async function notifyDiscord({ repo, author, message, url }) {
+  if (!DISCORD_WEBHOOK_URL) {
+    console.error('❌ No se ha configurado el webhook de Discord.');
     return;
   }
 
+  const embed = {
+    title: `📢 Nuevo Push en ${repo}`,
+    description: message,
+    color: 0x1D82B6,
+    url: url,
+    fields: [
+      {
+        name: '👤 Autor',
+        value: author,
+        inline: true
+      },
+      {
+        name: '🔗 Commit',
+        value: `[Ver commit](${url})`,
+        inline: true
+      }
+    ],
+    timestamp: new Date()
+  };
+
   try {
-    await axios.post(webhookUrl, {
-      content: message
+    await axios.post(DISCORD_WEBHOOK_URL, {
+      username: 'Imán Bot Core',
+      avatar_url: 'https://i.imgur.com/sC7QK7x.png',
+      embeds: [embed]
     });
-    console.log("✅ Notificación enviada a Discord");
+    console.log('✅ Notificación enviada a Discord.');
   } catch (error) {
-    console.error("❌ Error al enviar a Discord:", error.message);
+    console.error('❌ Error al enviar mensaje a Discord:', error.message);
   }
 }
 

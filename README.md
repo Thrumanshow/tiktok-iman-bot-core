@@ -1,4 +1,6 @@
-# 🧲 TikTok 吸引核心機器人
+
+# 🧲 TikTok 吸引核心機器人  
+![Protección activa](https://img.shields.io/badge/🛡️_Filtro-Contribución_Activa-blue)
 
 🚀 歡迎來到 TikTok 社群推廣的自動化核心系統。  
 本儲存庫包含一個模組化、可擴展的系統，能夠**偵測、處理並啟動曝光流程**，透過 GitHub Issues 作為進入點。

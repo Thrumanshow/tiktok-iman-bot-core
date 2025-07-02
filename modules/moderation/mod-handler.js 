@@ -1,0 +1,25 @@
+// modules/moderation/mod-handler.js
+
+module.exports = {
+  handleCommand: async (message) => {
+    const [command, ...args] = message.content.trim().split(' ');
+
+    if (command === '!ban' && message.member.permissions.has('BAN_MEMBERS')) {
+      const member = message.mentions.members.first();
+      if (member) {
+        await member.ban({ reason: 'Acción moderada por el bot de HormigasAIS' });
+        message.channel.send(`🛡️ Usuario ${member.user.tag} ha sido baneado.`);
+      }
+    }
+
+    if (command === '!kick' && message.member.permissions.has('KICK_MEMBERS')) {
+      const member = message.mentions.members.first();
+      if (member) {
+        await member.kick('Kicked by bot');
+        message.channel.send(`🛡️ Usuario ${member.user.tag} fue expulsado.`);
+      }
+    }
+
+    // Puedes agregar !mute, !warn, etc.
+  }
+};

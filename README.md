@@ -72,10 +72,8 @@ XOXO 將會完成剩下的任務。
 - `github-actions[bot]`
 - 信任的協作者名單
 
-其他使用者的提案將會經由作者審查後決定是否合併。  
-👉 詳見：[`acerca-de/nexus-alerts/filtro-malicioso/CONTRIBUTING.md`](./acerca-de/nexus-alerts/filtro-malicioso/CONTRIBUTING.md)
-
-🔒 此機制由 `filtro-malicioso.js` 自動執行，保證專案的透明與安全。
+[其他使用者的提案將會經由作者審查後決定是否合併]  
+(https://github.com/Thrumanshow/tiktok-iman-bot-core/blob/main/acerca-de%2Fnexus-alerts%2Ffiltro-malicioso%2FCONTRIBUTING.md)
 
 ## 🌀 NEXUS 哲學
 

@@ -40,7 +40,7 @@ function generarImpulso(videoURL, objetivo) {
 async function main() {
   const fuentes = await conectarFuentesExternas();
 
-  const videoEjemplo = 'https://vm.tiktok.com/ZMSCAyQFD';
+  const videoEjemplo = 'https://vm.tiktok.com/.github/workflows/static.yml';
   const objetivo = 'Aumentar visibilidad orgánica y evaluar ratio de interacción';
 
   generarImpulso(videoEjemplo, objetivo);

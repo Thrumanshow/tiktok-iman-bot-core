@@ -10,6 +10,8 @@ logs/
 
 # Environment variables
 .env
+config/
+secrets.json
 
 # Editor folders
 .vscode/

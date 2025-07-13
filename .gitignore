@@ -25,3 +25,9 @@ secrets.json
 
 # Replit
 .replit
+
+Bash```
+git rm --cached .env
+echo ".env" >> .gitignore
+git commit -m "remove exposed .env"
+git push```

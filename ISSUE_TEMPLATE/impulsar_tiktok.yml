@@ -33,4 +33,5 @@ body:
       description: "Notas adicionales o contexto para la publicación"
       placeholder: "Ejemplo: Puede estar vinculado a tendencia actual."
     validations:
+      required: true
       required: false

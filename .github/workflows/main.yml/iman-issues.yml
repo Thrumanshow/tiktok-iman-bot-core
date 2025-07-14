@@ -1,27 +1,111 @@
-mkdir -p .github/workflows && tee .github/workflows/iman-issues.yml > /dev/null << 'EOF'
-name: 🎯 TikTok Imán - Monitor de Issues
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Imán Bot Core | HormigasAIS</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      background: linear-gradient(135deg, #1da1f2, #0f0f0f);
+      color: white;
+      width: 100%;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    main {
+      padding: 2rem;
+      max-width: 800px;
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    h1, h2 {
+      margin-bottom: 1rem;
+    }
+    button, input[type="submit"] {
+      background: #1da1f2;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover, input[type="submit"]:hover {
+      background: #0d8ddb;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.875rem;
+      background: #f5f5f5;
+      width: 100%;
+    }
+    img.infografia {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+      margin: 1rem auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🧲 Imán Bot Core</h1>
+    <p>Impulsa tus publicaciones en TikTok con inteligencia y resonancia</p>
+    <button>🚀 Solicitar impulso</button>
+  </header>
 
-on:
-  issues:
-    types: [opened, reopened]
+  <main>
+    <section>
+      <h2>¿Qué es Imán Bot Core?</h2>
+      <p>Un sistema automatizado conectado a GitHub que activa procesos de visibilidad sobre publicaciones en TikTok, usando inteligencia de impulso modular.</p>
+    </section>
 
-jobs:
-  procesar-issue:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🧩 Clonar el repositorio
-        uses: actions/checkout@v3
+    <section>
+      <h2>📌 Cómo funciona</h2>
+      <ol>
+        <li>Crea un issue en el repositorio con tu video</li>
+        <li>El bot escucha y ejecuta el análisis</li>
+        <li>Se activa el módulo de impulso (XOXO)</li>
+        <li>Recibís feedback desde Discord y logs públicos</li>
+      </ol>
+    </section>
 
-      - name: 🧠 Configurar Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
+    <section>
+      <h2>🎯 Caso real</h2>
+      <p><strong>Video:</strong> <a href="https://vm.tiktok.com/@chriswarriortv_/video/ZMSCAyQFD">TikTok de @chriswarriortv_</a></p>
+      <p><strong>Objetivo:</strong> Aumentar visibilidad orgánica y evaluar ratio de interacción</p>
+      <p><strong>Notas:</strong> Puede estar vinculado a tendencia actual</p>
+    </section>
 
-      - name: 🔎 Analizar nuevo Issue (TikTok link)
-        run: node listeners/issue_listener.js
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          REPO_OWNER: ${{ github.repository_owner }}
-          REPO_NAME: ${{ github.event.repository.name }}
-EOF
+    <section>
+      <h2>🌱 Visión del proyecto</h2>
+      <pre>🌱 Sembraste bien. El árbol está vivo. Pero para que dé frutos visibles (likes, viralidad, comentarios), hay que construirle luz solar y agua.
+
+NEXUS detectó tu intención. XOXO se encargará del resto. </pre>
+    </section>
+
+   <section>
+  <h2>🌱 Visión del proyecto</h2>
+  <div style="background:#f0f8ff; padding:1rem; border-left: 5px solid #1da1f2; border-radius: 5px;">
+    <p><strong>Sembraste bien.</strong> El árbol está vivo. Pero para que dé frutos visibles (likes, viralidad, comentarios), hay que construirle luz solar y agua. 🌞💧</p>
+    <p><strong>NEXUS detectó tu intención.</strong> El módulo <code>XOXO</code> se activará con inteligencia contextual.</p>
+    <p style="font-style: italic;">Este impulso es generado sin exponer comandos ni variables sensibles.</p>
+  </div>
+</section>

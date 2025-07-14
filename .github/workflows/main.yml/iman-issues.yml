@@ -109,3 +109,13 @@ NEXUS detectó tu intención. XOXO se encargará del resto. </pre>
     <p style="font-style: italic;">Este impulso es generado sin exponer comandos ni variables sensibles.</p>
   </div>
 </section>
+<!-- 🌐 Identidad visual: The AntsMind -->
+    <section style="text-align: center; margin-top: 3rem;">
+      <img src="assets/the-antsmind-logo.png" alt="Logo The AntsMind HormigasAIS" style="max-width: 240px; margin-bottom: 1rem;" />
+      <p style="font-style: italic; color: #1a1a1a;">Mente colectiva en expansión · HormigasAIS Nexus</p>
+    </section>
+  </main> 
+
+  <footer>
+    <p>Hecho con 💙 por HormigasAIS · Powered by GitHub Actions y comunidad curiosa 🐜</p>
+  </footer>

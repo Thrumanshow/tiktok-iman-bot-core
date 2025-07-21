@@ -1,0 +1,29 @@
+{
+"iman_bot_core": {
+"name": "TikTok Imán Bot Core",
+"description": "Módulo automatizado que escucha, potencia y responde a contenido TikTok desde el ecosistema HormigasAIS.",
+"version": "1.0.0",
+"hosted_at": "https://hormigasaisa.atlassian.net",
+"features": {
+"slack_integration": true,
+"github_listening": true,
+"token_rotation": true,
+"content_boosting": true,
+"tiktok_targeting": true
+},
+"philosophy": [
+"Impulsamos desde las sombras del algoritmo.",
+"No pedimos permiso, activamos resonancia.",
+"Cada video merece su momento de vibración.",
+"Humanos con ideas. Bots con propósito."
+],
+"tags": [
+"#imanbotcore",
+"#hormigasais",
+"#automatizacioncreativa",
+"#tiktokcore",
+"#SlackPower"
+],
+"maintainer": "Cristhiam Quiñonez"
+}
+}
